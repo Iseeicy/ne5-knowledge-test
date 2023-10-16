@@ -8,7 +8,10 @@ class_name KnowledgeInteger
 ## The value of this knowledge, as an integer
 @export var value: int:
 	get:
-		return _value
+		if _value == null:
+			return 0
+		else:
+			return _value
 	set(new_value):
 		_value = new_value
 
@@ -17,7 +20,7 @@ class_name KnowledgeInteger
 #
 
 func get_value() -> int:
-	return _value
+	return value
 
 func set_value(new_value: int) -> void:
-	_value = new_value
+	value = new_value

@@ -17,7 +17,7 @@ class_name KnowledgeFloat
 #
 
 func get_value() -> float:
-	return _value
+	return value
 
 func set_value(new_value: float) -> void:
-	_value = new_value
+	value = new_value

@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="ne5-knowledge-test"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+KnowledgeDB="*res://knowledge_database.gd"
 
 [dotnet]
 

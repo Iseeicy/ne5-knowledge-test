@@ -17,7 +17,7 @@ class_name KnowledgeBool
 #
 
 func get_value() -> bool:
-	return _value
+	return value
 
 func set_value(new_value: bool) -> void:
-	_value = new_value
+	value = new_value

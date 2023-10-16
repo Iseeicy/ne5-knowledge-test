@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu124frj7140s"]
+[gd_scene load_steps=8 format=3 uid="uid://bj2h402vxn81s"]
 
 [ext_resource type="Script" path="res://examples_scripts/string_knowlege_label.gd" id="1_arimv"]
-[ext_resource type="Resource" uid="uid://bi6gyk6mwhoea" path="res://input_knowledge.tres" id="2_n0yt8"]
+[ext_resource type="Resource" path="res://input_knowledge.tres" id="2_n0yt8"]
+[ext_resource type="Script" path="res://knowledge_agent.gd" id="3_almak"]
 [ext_resource type="Script" path="res://examples_scripts/string_knowledge_line_edit.gd" id="3_aoerv"]
+[ext_resource type="Resource" uid="uid://ddjptbx2y7e5m" path="res://know_int.tres" id="4_02xud"]
+[ext_resource type="Script" path="res://knowledge_dock.gd" id="4_sx6pj"]
+[ext_resource type="Script" path="res://knowledge_dock_tree.gd" id="5_43fr7"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,6 +26,18 @@ text = "This is a thing"
 script = ExtResource("1_arimv")
 knowledge = ExtResource("2_n0yt8")
 
+[node name="StringKnowledgeDisplay2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 229.0
+offset_right = 329.0
+offset_bottom = 278.0
+text = "This is a thing"
+
+[node name="KnowledgeAgent" type="Node" parent="StringKnowledgeDisplay2"]
+script = ExtResource("3_almak")
+knowledge = ExtResource("4_02xud")
+
 [node name="StringKnowledgeLineEdit" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 125.0
@@ -30,5 +46,37 @@ offset_right = 383.0
 offset_bottom = 150.0
 script = ExtResource("3_aoerv")
 knowledge = ExtResource("2_n0yt8")
+
+[node name="KnowledgeDock" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 488.0
+offset_top = 256.0
+offset_right = 757.0
+offset_bottom = 606.0
+script = ExtResource("4_sx6pj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="KnowledgeDock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeaderBar" type="HBoxContainer" parent="KnowledgeDock/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KnowledgeDock/VBoxContainer/HeaderBar"]
+layout_mode = 2
+text = "Knowledge"
+
+[node name="Contents" type="PanelContainer" parent="KnowledgeDock/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KnowledgeDockTree" type="Tree" parent="KnowledgeDock/VBoxContainer/Contents"]
+layout_mode = 2
+script = ExtResource("5_43fr7")
 
 [connection signal="text_changed" from="StringKnowledgeLineEdit" to="StringKnowledgeLineEdit" method="_on_text_changed"]
