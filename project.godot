@@ -17,8 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-KnowledgeDB="*res://knowledge_database.gd"
+KnowledgeDB="*res://addons/netengine5/net.bobbo.knowledge/knowledge_database.gd"
 
 [dotnet]
 
 project/assembly_name="ne5-knowledge-test"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/netengine5/net.bobbo.knowledge/plugin.cfg")

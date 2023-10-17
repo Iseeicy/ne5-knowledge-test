@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu124frj7140s"]
+[gd_scene load_steps=11 format=3 uid="uid://bu124frj7140s"]
 
 [ext_resource type="Script" path="res://examples_scripts/string_knowlege_label.gd" id="1_arimv"]
 [ext_resource type="Resource" uid="uid://bi6gyk6mwhoea" path="res://input_knowledge.tres" id="2_n0yt8"]
-[ext_resource type="Script" path="res://knowledge_agent.gd" id="3_almak"]
 [ext_resource type="Script" path="res://examples_scripts/string_knowledge_line_edit.gd" id="3_aoerv"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_agent.gd" id="3_c6h0d"]
 [ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="4_rs52k"]
-[ext_resource type="Script" path="res://knowledge_dock.gd" id="4_sx6pj"]
 [ext_resource type="Resource" uid="uid://hicdncsvl63q" path="res://know/bleh/fleh.tres" id="5_4fnec"]
-[ext_resource type="Script" path="res://knowledge_dock_tree.gd" id="5_43fr7"]
-[ext_resource type="Script" path="res://scripts/knowledge_dock_label_value.gd" id="9_rqrge"]
+[ext_resource type="PackedScene" uid="uid://cy4bv350o580n" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_dock/knowledge_dock.tscn" id="7_tmg6d"]
+[ext_resource type="Script" path="res://scripts/knowledge_int_slider.gd" id="8_ypwgn"]
+[ext_resource type="Script" path="res://examples_scripts/save_button.gd" id="9_6y02u"]
+[ext_resource type="Script" path="res://examples_scripts/load_button.gd" id="10_ejpl3"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -37,11 +38,11 @@ offset_bottom = 278.0
 text = "This is a thing"
 
 [node name="KnowledgeAgent" type="Node" parent="StringKnowledgeDisplay2"]
-script = ExtResource("3_almak")
+script = ExtResource("3_c6h0d")
 knowledge = ExtResource("4_rs52k")
 
 [node name="KnowledgeAgent2" type="Node" parent="StringKnowledgeDisplay2"]
-script = ExtResource("3_almak")
+script = ExtResource("3_c6h0d")
 knowledge = ExtResource("5_4fnec")
 
 [node name="StringKnowledgeLineEdit" type="LineEdit" parent="."]
@@ -53,64 +54,50 @@ offset_bottom = 150.0
 script = ExtResource("3_aoerv")
 knowledge = ExtResource("2_n0yt8")
 
-[node name="KnowledgeDock" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 488.0
-offset_top = 256.0
-offset_right = 757.0
-offset_bottom = 606.0
-script = ExtResource("4_sx6pj")
+[node name="KnowledgeDock" parent="." instance=ExtResource("7_tmg6d")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="KnowledgeDock"]
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 83.0
+offset_right = 968.0
+offset_bottom = 112.0
+max_value = 5.0
+scrollable = false
+script = ExtResource("8_ypwgn")
+
+[node name="KnowledgeAgent" type="Node" parent="HSlider"]
+script = ExtResource("3_c6h0d")
+knowledge = ExtResource("4_rs52k")
+
+[node name="SaveButton" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 22.0
+offset_top = -103.0
+offset_right = 122.0
+offset_bottom = -71.0
+grow_vertical = 0
+text = "Save"
+script = ExtResource("9_6y02u")
 
-[node name="HeaderBar" type="HBoxContainer" parent="KnowledgeDock/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="KnowledgeDock/VBoxContainer/HeaderBar"]
-layout_mode = 2
-text = "Knowledge"
-
-[node name="Contents" type="PanelContainer" parent="KnowledgeDock/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="KnowledgeDockTree" type="Tree" parent="KnowledgeDock/VBoxContainer/Contents"]
-layout_mode = 2
-hide_root = true
-script = ExtResource("5_43fr7")
-
-[node name="PanelContainer" type="PanelContainer" parent="KnowledgeDock/VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="KnowledgeDock/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Value:"
-
-[node name="Value" type="Label" parent="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tree")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-autowrap_mode = 3
-script = ExtResource("9_rqrge")
-tree = NodePath("../../../../Contents/KnowledgeDockTree")
+[node name="LoadButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -61.0
+offset_right = 122.0
+offset_bottom = -29.0
+grow_vertical = 0
+text = "Load"
+script = ExtResource("10_ejpl3")
 
 [connection signal="text_changed" from="StringKnowledgeLineEdit" to="StringKnowledgeLineEdit" method="_on_text_changed"]
-[connection signal="item_selected" from="KnowledgeDock/VBoxContainer/Contents/KnowledgeDockTree" to="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Value" method="_on_knowledge_dock_tree_item_selected"]
+[connection signal="value_changed" from="HSlider" to="HSlider/KnowledgeAgent" method="set_value"]
+[connection signal="value_changed" from="HSlider/KnowledgeAgent" to="HSlider" method="set_value"]
+[connection signal="pressed" from="SaveButton" to="SaveButton" method="_on_pressed"]
+[connection signal="pressed" from="LoadButton" to="LoadButton" method="_on_pressed"]

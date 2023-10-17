@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="KnowledgeInteger" load_steps=2 format=3 uid="uid://bhb0p82dbsry5"]
 
-[ext_resource type="Script" path="res://scripts/knowledge_int.gd" id="1_cfjex"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_int.gd" id="1_cfjex"]
 
 [resource]
 script = ExtResource("1_cfjex")
-value = 0
+value = 3
