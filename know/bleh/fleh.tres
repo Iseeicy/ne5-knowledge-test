@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="KnowledgeFloat" load_steps=2 format=3 uid="uid://hicdncsvl63q"]
+
+[ext_resource type="Script" path="res://scripts/knowledge_float.gd" id="1_6g6ls"]
+
+[resource]
+script = ExtResource("1_6g6ls")
+value = 0.0

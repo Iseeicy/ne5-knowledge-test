@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="KnowledgeInteger" load_steps=2 format=3 uid="uid://ddjptbx2y7e5m"]
+[gd_resource type="Resource" script_class="KnowledgeInteger" load_steps=2 format=3 uid="uid://bhb0p82dbsry5"]
 
 [ext_resource type="Script" path="res://scripts/knowledge_int.gd" id="1_cfjex"]
 

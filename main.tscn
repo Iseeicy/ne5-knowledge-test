@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj2h402vxn81s"]
+[gd_scene load_steps=10 format=3 uid="uid://bu124frj7140s"]
 
 [ext_resource type="Script" path="res://examples_scripts/string_knowlege_label.gd" id="1_arimv"]
-[ext_resource type="Resource" path="res://input_knowledge.tres" id="2_n0yt8"]
+[ext_resource type="Resource" uid="uid://bi6gyk6mwhoea" path="res://input_knowledge.tres" id="2_n0yt8"]
 [ext_resource type="Script" path="res://knowledge_agent.gd" id="3_almak"]
 [ext_resource type="Script" path="res://examples_scripts/string_knowledge_line_edit.gd" id="3_aoerv"]
-[ext_resource type="Resource" uid="uid://ddjptbx2y7e5m" path="res://know_int.tres" id="4_02xud"]
+[ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="4_rs52k"]
 [ext_resource type="Script" path="res://knowledge_dock.gd" id="4_sx6pj"]
+[ext_resource type="Resource" uid="uid://hicdncsvl63q" path="res://know/bleh/fleh.tres" id="5_4fnec"]
 [ext_resource type="Script" path="res://knowledge_dock_tree.gd" id="5_43fr7"]
+[ext_resource type="Script" path="res://scripts/knowledge_dock_label_value.gd" id="9_rqrge"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -36,7 +38,11 @@ text = "This is a thing"
 
 [node name="KnowledgeAgent" type="Node" parent="StringKnowledgeDisplay2"]
 script = ExtResource("3_almak")
-knowledge = ExtResource("4_02xud")
+knowledge = ExtResource("4_rs52k")
+
+[node name="KnowledgeAgent2" type="Node" parent="StringKnowledgeDisplay2"]
+script = ExtResource("3_almak")
+knowledge = ExtResource("5_4fnec")
 
 [node name="StringKnowledgeLineEdit" type="LineEdit" parent="."]
 layout_mode = 0
@@ -77,6 +83,34 @@ size_flags_vertical = 3
 
 [node name="KnowledgeDockTree" type="Tree" parent="KnowledgeDock/VBoxContainer/Contents"]
 layout_mode = 2
+hide_root = true
 script = ExtResource("5_43fr7")
 
+[node name="PanelContainer" type="PanelContainer" parent="KnowledgeDock/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="KnowledgeDock/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Value:"
+
+[node name="Value" type="Label" parent="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" node_paths=PackedStringArray("tree")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+autowrap_mode = 3
+script = ExtResource("9_rqrge")
+tree = NodePath("../../../../Contents/KnowledgeDockTree")
+
 [connection signal="text_changed" from="StringKnowledgeLineEdit" to="StringKnowledgeLineEdit" method="_on_text_changed"]
+[connection signal="item_selected" from="KnowledgeDock/VBoxContainer/Contents/KnowledgeDockTree" to="KnowledgeDock/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Value" method="_on_knowledge_dock_tree_item_selected"]
