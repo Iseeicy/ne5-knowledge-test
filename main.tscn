@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu124frj7140s"]
+[gd_scene load_steps=14 format=3 uid="uid://bu124frj7140s"]
 
 [ext_resource type="Script" path="res://examples_scripts/string_knowlege_label.gd" id="1_arimv"]
 [ext_resource type="Resource" uid="uid://bi6gyk6mwhoea" path="res://input_knowledge.tres" id="2_n0yt8"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://scripts/knowledge_int_slider.gd" id="8_ypwgn"]
 [ext_resource type="Script" path="res://examples_scripts/save_button.gd" id="9_6y02u"]
 [ext_resource type="Script" path="res://examples_scripts/load_button.gd" id="10_ejpl3"]
+[ext_resource type="Texture2D" uid="uid://bnrtsr4b4f0yp" path="res://icon.svg" id="11_fi4v2"]
+[ext_resource type="Script" path="res://test_condition.gd" id="12_p6loa"]
+[ext_resource type="Resource" uid="uid://ci86sodkqytna" path="res://cond_a.tres" id="13_olkng"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -95,6 +98,16 @@ offset_bottom = -29.0
 grow_vertical = 0
 text = "Load"
 script = ExtResource("10_ejpl3")
+
+[node name="ConditionEvalTest" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 857.0
+offset_top = 141.0
+offset_right = 985.0
+offset_bottom = 269.0
+texture = ExtResource("11_fi4v2")
+script = ExtResource("12_p6loa")
+condition = ExtResource("13_olkng")
 
 [connection signal="text_changed" from="StringKnowledgeLineEdit" to="StringKnowledgeLineEdit" method="_on_text_changed"]
 [connection signal="value_changed" from="HSlider" to="HSlider/KnowledgeAgent" method="set_value"]
