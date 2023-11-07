@@ -1,9 +1,6 @@
 extends TextureRect
 
-@export var condition: KnowledgeCondition
 
-func _process(_delta):
-	if condition == null:
-		return
-		
-	visible = condition.evaluate()
+
+func _on_knowledge_agent_value_changed(new_value):
+	visible = new_value

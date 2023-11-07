@@ -107,10 +107,14 @@ offset_right = 985.0
 offset_bottom = 269.0
 texture = ExtResource("11_fi4v2")
 script = ExtResource("12_p6loa")
-condition = ExtResource("13_olkng")
+
+[node name="KnowledgeAgent" type="Node" parent="ConditionEvalTest"]
+script = ExtResource("3_c6h0d")
+knowledge = ExtResource("13_olkng")
 
 [connection signal="text_changed" from="StringKnowledgeLineEdit" to="StringKnowledgeLineEdit" method="_on_text_changed"]
 [connection signal="value_changed" from="HSlider" to="HSlider/KnowledgeAgent" method="set_value"]
 [connection signal="value_changed" from="HSlider/KnowledgeAgent" to="HSlider" method="set_value"]
 [connection signal="pressed" from="SaveButton" to="SaveButton" method="_on_pressed"]
 [connection signal="pressed" from="LoadButton" to="LoadButton" method="_on_pressed"]
+[connection signal="value_changed" from="ConditionEvalTest/KnowledgeAgent" to="ConditionEvalTest" method="_on_knowledge_agent_value_changed"]

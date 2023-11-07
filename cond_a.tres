@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="KnowledgeComparisonCondition" load_steps=5 format=3 uid="uid://ci86sodkqytna"]
 
 [ext_resource type="Script" path="res://conditions/knowledge_comparison_condition.gd" id="1_7btwt"]
-[ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="1_rxyi2"]
+[ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="1_ny751"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_int.gd" id="2_tqv4r"]
 
 [sub_resource type="Resource" id="Resource_kt47y"]
@@ -10,6 +10,7 @@ default_value = 5
 
 [resource]
 script = ExtResource("1_7btwt")
-knowledge_left = ExtResource("1_rxyi2")
+knowledge_left = ExtResource("1_ny751")
 comparison = 0
 knowledge_right = SubResource("Resource_kt47y")
+default_value = false

@@ -19,9 +19,35 @@ enum ComparisonType {
 #	Exports
 #
 
-@export var knowledge_left: Knowledge = null
+@export var knowledge_left: Knowledge:
+	get:
+		return _knowledge_left
+	set(new_knowledge):
+		print("Hello from ", resource_path)
+		if _knowledge_left != null:
+			_knowledge_left.disconnect_updated_value(_on_knowledge_value_changed)
+		if new_knowledge != null:
+			new_knowledge.connect_updated_value(_on_knowledge_value_changed)
+		_knowledge_left = new_knowledge
+	
 @export var comparison: ComparisonType = ComparisonType.Equals
-@export var knowledge_right: Knowledge = null
+
+@export var knowledge_right: Knowledge:
+	get:
+		return _knowledge_right
+	set(new_knowledge):
+		if _knowledge_right != null:
+			_knowledge_right.disconnect_updated_value(_on_knowledge_value_changed)
+		if new_knowledge != null:
+			new_knowledge.connect_updated_value(_on_knowledge_value_changed)
+		_knowledge_right = new_knowledge
+
+#
+#	Private Values
+#
+
+var _knowledge_left: Knowledge = null
+var _knowledge_right: Knowledge = null
 
 #
 #	Condition Functions
@@ -47,3 +73,12 @@ func evaluate() -> bool:
 			return knowledge_left.get_value() <= knowledge_right.get_value()
 	
 	return false
+
+#
+#	Signals
+#
+
+## Whenever one of our assigned knowledges has it's value updated, re-calculate 
+## OUR value
+func _on_knowledge_value_changed(_unused) -> void:
+	self.recalculate_value()
