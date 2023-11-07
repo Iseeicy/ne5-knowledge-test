@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bu124frj7140s"]
+[gd_scene load_steps=19 format=3 uid="uid://bu124frj7140s"]
 
 [ext_resource type="Script" path="res://examples_scripts/string_knowlege_label.gd" id="1_arimv"]
 [ext_resource type="Resource" uid="uid://bi6gyk6mwhoea" path="res://input_knowledge.tres" id="2_n0yt8"]
@@ -9,10 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://cy4bv350o580n" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_dock/knowledge_dock.tscn" id="7_tmg6d"]
 [ext_resource type="Script" path="res://scripts/knowledge_int_slider.gd" id="8_ypwgn"]
 [ext_resource type="Script" path="res://examples_scripts/save_button.gd" id="9_6y02u"]
+[ext_resource type="Resource" uid="uid://ivj762tsacbv" path="res://know/know_int_2.tres" id="9_vqgac"]
 [ext_resource type="Script" path="res://examples_scripts/load_button.gd" id="10_ejpl3"]
 [ext_resource type="Texture2D" uid="uid://bnrtsr4b4f0yp" path="res://icon.svg" id="11_fi4v2"]
 [ext_resource type="Script" path="res://test_condition.gd" id="12_p6loa"]
-[ext_resource type="Resource" uid="uid://ci86sodkqytna" path="res://cond_a.tres" id="13_olkng"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_int.gd" id="13_jq88x"]
+[ext_resource type="Script" path="res://conditions/knowledge_comparison_condition.gd" id="14_xh4ss"]
+[ext_resource type="Resource" uid="uid://pynkp4a6sbh4" path="res://cond_b.tres" id="16_y454k"]
+
+[sub_resource type="Resource" id="Resource_kt47y"]
+script = ExtResource("13_jq88x")
+default_value = 5
+
+[sub_resource type="Resource" id="Resource_pqu13"]
+script = ExtResource("14_xh4ss")
+knowledge_left = ExtResource("4_rs52k")
+comparison = 0
+knowledge_right = SubResource("Resource_kt47y")
+default_value = false
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -73,6 +87,20 @@ script = ExtResource("8_ypwgn")
 script = ExtResource("3_c6h0d")
 knowledge = ExtResource("4_rs52k")
 
+[node name="HSlider2" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 114.0
+offset_right = 968.0
+offset_bottom = 143.0
+max_value = 5.0
+scrollable = false
+script = ExtResource("8_ypwgn")
+
+[node name="KnowledgeAgent" type="Node" parent="HSlider2"]
+script = ExtResource("3_c6h0d")
+knowledge = ExtResource("9_vqgac")
+
 [node name="SaveButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -110,11 +138,27 @@ script = ExtResource("12_p6loa")
 
 [node name="KnowledgeAgent" type="Node" parent="ConditionEvalTest"]
 script = ExtResource("3_c6h0d")
-knowledge = ExtResource("13_olkng")
+knowledge = SubResource("Resource_pqu13")
+
+[node name="ConditionEvalTest2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 857.0
+offset_top = 314.0
+offset_right = 985.0
+offset_bottom = 442.0
+texture = ExtResource("11_fi4v2")
+script = ExtResource("12_p6loa")
+
+[node name="KnowledgeAgent" type="Node" parent="ConditionEvalTest2"]
+script = ExtResource("3_c6h0d")
+knowledge = ExtResource("16_y454k")
 
 [connection signal="text_changed" from="StringKnowledgeLineEdit" to="StringKnowledgeLineEdit" method="_on_text_changed"]
 [connection signal="value_changed" from="HSlider" to="HSlider/KnowledgeAgent" method="set_value"]
 [connection signal="value_changed" from="HSlider/KnowledgeAgent" to="HSlider" method="set_value"]
+[connection signal="value_changed" from="HSlider2" to="HSlider2/KnowledgeAgent" method="set_value"]
+[connection signal="value_changed" from="HSlider2/KnowledgeAgent" to="HSlider2" method="set_value"]
 [connection signal="pressed" from="SaveButton" to="SaveButton" method="_on_pressed"]
 [connection signal="pressed" from="LoadButton" to="LoadButton" method="_on_pressed"]
 [connection signal="value_changed" from="ConditionEvalTest/KnowledgeAgent" to="ConditionEvalTest" method="_on_knowledge_agent_value_changed"]
+[connection signal="value_changed" from="ConditionEvalTest2/KnowledgeAgent" to="ConditionEvalTest2" method="_on_knowledge_agent_value_changed"]

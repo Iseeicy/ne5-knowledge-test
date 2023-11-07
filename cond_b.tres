@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="KnowledgeOperatorCondition" load_steps=9 format=3 uid="uid://pynkp4a6sbh4"]
+
+[ext_resource type="Script" path="res://conditions/knowledge_operator_condition.gd" id="1_7gmjn"]
+[ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="1_ds6bh"]
+[ext_resource type="Script" path="res://conditions/knowledge_comparison_condition.gd" id="1_qbfv1"]
+[ext_resource type="Resource" uid="uid://ivj762tsacbv" path="res://know/know_int_2.tres" id="2_26chr"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_int.gd" id="4_o0gci"]
+
+[sub_resource type="Resource" id="Resource_i4ipd"]
+script = ExtResource("1_qbfv1")
+knowledge_left = ExtResource("1_ds6bh")
+comparison = 0
+knowledge_right = ExtResource("2_26chr")
+default_value = false
+
+[sub_resource type="Resource" id="Resource_n7i41"]
+script = ExtResource("4_o0gci")
+default_value = 5
+
+[sub_resource type="Resource" id="Resource_tkk8j"]
+script = ExtResource("1_qbfv1")
+knowledge_left = ExtResource("1_ds6bh")
+comparison = 0
+knowledge_right = SubResource("Resource_n7i41")
+default_value = false
+
+[resource]
+script = ExtResource("1_7gmjn")
+knowledge_left = SubResource("Resource_i4ipd")
+operator = 0
+knowledge_right = SubResource("Resource_tkk8j")
+default_value = false

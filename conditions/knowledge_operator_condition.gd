@@ -1,18 +1,14 @@
 @tool
 extends KnowledgeCondition
-class_name KnowledgeComparisonCondition
+class_name KnowledgeOperatorCondition
 
 #
 #	Enums
 #
 
-enum ComparisonType {
-	Equals,
-	NotEquals,
-	GreaterThan,
-	GreaterThanOrEqualsTo,
-	LessThan,
-	LessThanOrEqualsTo
+enum OperatorType {
+	And,
+	Or,
 }
 
 #
@@ -29,7 +25,7 @@ enum ComparisonType {
 			new_knowledge.connect_updated_value(_on_knowledge_value_changed)
 		_knowledge_left = new_knowledge
 	
-@export var comparison: ComparisonType = ComparisonType.Equals
+@export var operator: OperatorType = OperatorType.And
 
 @export var knowledge_right: Knowledge:
 	get:
@@ -56,20 +52,12 @@ func evaluate() -> bool:
 	if knowledge_left == null or knowledge_right == null:
 		return false
 	
-	# Use the given comparison type to apply actual operators
-	match comparison:
-		ComparisonType.Equals:
-			return knowledge_left.get_value() == knowledge_right.get_value()
-		ComparisonType.NotEquals:
-			return knowledge_left.get_value() != knowledge_right.get_value()
-		ComparisonType.GreaterThan:
-			return knowledge_left.get_value() > knowledge_right.get_value()
-		ComparisonType.GreaterThanOrEqualsTo:
-			return knowledge_left.get_value() >= knowledge_right.get_value()
-		ComparisonType.LessThan:
-			return knowledge_left.get_value() < knowledge_right.get_value()
-		ComparisonType.LessThanOrEqualsTo:
-			return knowledge_left.get_value() <= knowledge_right.get_value()
+	# Use the given operator type to apply actual operators
+	match operator:
+		OperatorType.And:
+			return knowledge_left.get_value() and knowledge_right.get_value()
+		OperatorType.Or:
+			return knowledge_left.get_value() or knowledge_right.get_value()
 	
 	return false
 

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_cfjex")
-value = 3
+default_value = 0
