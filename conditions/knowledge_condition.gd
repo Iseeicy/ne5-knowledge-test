@@ -27,24 +27,24 @@ func recalculate_value() -> void:
 	var new_value = evaluate()
 	
 	# If our value changed or we haven't been initialized
-	if KnowledgeDB.get_knowledge_value(resource_path) != new_value or _needs_init:
+	if KnowledgeDB.get_knowledge_value(self) != new_value or _needs_init:
 		_needs_init = false
 		
 		# Tell the knowledge database about our value!
-		KnowledgeDB.set_knowledge_value(resource_path, new_value)
+		KnowledgeDB.set_knowledge_value(self, new_value)
 
 #
 #	Knowledge Functions
 #
 
 func get_value() -> bool:
-	return KnowledgeDB.get_knowledge_value(resource_path)
+	return KnowledgeDB.get_knowledge_value(self)
 	
 func set_value(_new_value: bool) -> void:
 	recalculate_value()
 	
 func connect_updated_value(callable: Callable) -> void:
-	KnowledgeDB.connect_updated_value(resource_path, callable)
+	KnowledgeDB.connect_updated_value(self, callable)
 	
 func disconnect_updated_value(callable: Callable) -> void:
-	KnowledgeDB.disconnect_updated_value(resource_path, callable)
+	KnowledgeDB.disconnect_updated_value(self, callable)
