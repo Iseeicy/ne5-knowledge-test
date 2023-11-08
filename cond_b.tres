@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="KnowledgeOperatorCondition" load_steps=9 format=3 uid="uid://cooa2nqeqdlcm"]
 
-[ext_resource type="Script" path="res://conditions/knowledge_operator_condition.gd" id="1_7gmjn"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_operator_condition.gd" id="1_7gmjn"]
 [ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="1_al361"]
 [ext_resource type="Resource" uid="uid://ivj762tsacbv" path="res://know/know_int_2.tres" id="2_syti6"]
-[ext_resource type="Script" path="res://conditions/knowledge_comparison_condition.gd" id="3_l4lf7"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_comparison_condition.gd" id="3_l4lf7"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_int.gd" id="4_rqxll"]
 
 [sub_resource type="Resource" id="Resource_77vky"]
