@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="KnowledgeOperatorCondition" load_steps=9 format=3 uid="uid://cooa2nqeqdlcm"]
+[gd_resource type="Resource" script_class="KnowledgeOperatorCondition" load_steps=9 format=3 uid="uid://pynkp4a6sbh4"]
 
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_operator_condition.gd" id="1_7gmjn"]
 [ext_resource type="Resource" uid="uid://bhb0p82dbsry5" path="res://know/know_int.tres" id="1_al361"]

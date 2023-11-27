@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bj2h402vxn81s"]
+[gd_scene load_steps=19 format=3 uid="uid://bu124frj7140s"]
 
 [ext_resource type="Script" path="res://examples_scripts/string_knowlege_label.gd" id="1_arimv"]
 [ext_resource type="Resource" uid="uid://bi6gyk6mwhoea" path="res://input_knowledge.tres" id="2_n0yt8"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://test_condition.gd" id="12_p6loa"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_int.gd" id="13_jq88x"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.knowledge/knowledge_resources/knowledge_comparison_condition.gd" id="15_3bcio"]
-[ext_resource type="Resource" uid="uid://cooa2nqeqdlcm" path="res://cond_b.tres" id="16_y454k"]
+[ext_resource type="Resource" uid="uid://pynkp4a6sbh4" path="res://cond_b.tres" id="16_y454k"]
 
 [sub_resource type="Resource" id="Resource_kt47y"]
 script = ExtResource("13_jq88x")
